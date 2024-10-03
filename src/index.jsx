@@ -1,7 +1,9 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import TodoApp from "./components/TodoApp";
 
-const element = <h1>Hello World!</h1>;
+// styling
+import "./styles/style.css";
 
 const root = createRoot(document.getElementById("root"));
-root.render(element);
+root.render(<TodoApp />);
