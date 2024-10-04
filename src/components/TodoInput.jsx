@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class TodoInput extends React.Component {
   constructor(props) {
@@ -40,5 +41,9 @@ class TodoInput extends React.Component {
     );
   }
 }
+
+TodoInput.propTypes = {
+  addTodo: PropTypes.func.isRequired,
+};
 
 export default TodoInput;
