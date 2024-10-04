@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchBar from "../components/Searchbar";
 import TodoInput from "../components/TodoInput";
 import TodoList from "../components/TodoList";
 
 function Dashboard() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const localValue = localStorage.getItem("TASK");
+    if (localValue == null) return [];
+
+    return JSON.parse(localValue);
+  });
+
+  useEffect(() => {
+    localStorage.setItem("TASK", JSON.stringify(todos));
+  }, [todos]);
 
   function addTodo(title) {
     setTodos((currentTodos) => {
@@ -34,9 +43,7 @@ function Dashboard() {
     <section>
       <SearchBar />
       <h2>Todo List</h2>
-
       <TodoInput addTodo={addTodo} />
-
       <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
     </section>
   );
