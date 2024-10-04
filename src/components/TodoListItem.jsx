@@ -1,13 +1,14 @@
 import React from "react";
+import DeleteButton from "./DeleteButton";
 
-function TodoListItem({ todo, completed }) {
+function TodoListItem({ todo, completed, id, onDelete }) {
   return (
     <li className="list-item">
       <label>
-        <input type="checkbox" checked={completed} />
+        <input type="checkbox" />
         {todo}
       </label>
-      <button className="btn-danger">Delete</button>
+      <DeleteButton id={id} onDelete={onDelete} />
     </li>
   );
 }
