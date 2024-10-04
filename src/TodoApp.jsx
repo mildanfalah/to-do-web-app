@@ -1,8 +1,11 @@
 import React from "react";
-import Navigation from "./Navigation";
+import Navigation from "./components/Navigation";
 import { Route, Routes } from "react-router-dom";
-import Dashboard from "../pages/Dashboard";
-import AddPage from "../pages/AddPage";
+import Dashboard from "./pages/Dashboard";
+
+// styling
+import "./styles/style.css";
+import RegisterPage from "./pages/RegisterPage";
 
 function TodoApp() {
   return (
@@ -14,7 +17,7 @@ function TodoApp() {
       <main>
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/add" element={<AddPage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
       </main>
     </div>

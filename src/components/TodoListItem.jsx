@@ -1,25 +1,23 @@
 import React from "react";
-import DeleteButton from "./DeleteButton";
-import PropTypes from "prop-types";
 
-function TodoListItem({ todo, completed, id, onDelete }) {
+function TodoListItem({ title, completed, id, toggleTodo, deleteTodo }) {
   return (
-    <li className="list-item">
+    <li>
       <label>
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          checked={completed}
+          onChange={(e) => toggleTodo(id, e.target.checked)}
+        />
         <span style={completed ? { textDecoration: "line-through" } : {}}>
-          {todo}
+          {title}
         </span>
       </label>
-      <DeleteButton id={id} onDelete={onDelete} />
+      <button className="btn" onClick={() => deleteTodo(id)}>
+        Delete
+      </button>
     </li>
   );
 }
-
-TodoListItem.propTypes = {
-  todo: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
-  onDelete: PropTypes.func.isRequired,
-};
 
 export default TodoListItem;

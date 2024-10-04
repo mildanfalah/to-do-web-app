@@ -1,49 +1,32 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
 
-class TodoInput extends React.Component {
-  constructor(props) {
-    super(props);
+function TodoInput({ addTodo }) {
+  const [newTask, setNewTask] = useState("");
 
-    // Initial state
-    this.state = {
-      todo: "",
-    };
+  function submitHandler(e) {
+    e.preventDefault();
+    if (newTask === "") return;
 
-    this.onTodoChangeEventHandler = this.onTodoChangeEventHandler.bind(this);
-    this.onSubmitEventhandler = this.onSubmitEventhandler.bind(this);
+    addTodo(newTask);
+
+    setNewTask("");
   }
 
-  onTodoChangeEventHandler(event) {
-    this.setState(() => {
-      return {
-        todo: event.target.value,
-      };
-    });
-  }
-
-  onSubmitEventhandler(event) {
-    event.preventDefault();
-    this.props.addTodo(this.state);
-  }
-
-  render() {
-    return (
-      <form className="todo-input" onSubmit={this.onSubmitEventhandler}>
-        <input
-          type="text"
-          placeholder="Create new list"
-          value={this.state.todo}
-          onChange={this.onTodoChangeEventHandler}
-        />
-        <button type="submit">Add</button>
-      </form>
-    );
-  }
+  return (
+    <form className="todo-input" onSubmit={submitHandler}>
+      <label htmlFor="task">New Task</label>
+      <input
+        type="text"
+        id="task"
+        placeholder="Create new task"
+        value={newTask}
+        onChange={(e) => {
+          setNewTask(e.target.value);
+        }}
+      />
+      <button type="submit">Add</button>
+    </form>
+  );
 }
-
-TodoInput.propTypes = {
-  addTodo: PropTypes.func.isRequired,
-};
 
 export default TodoInput;

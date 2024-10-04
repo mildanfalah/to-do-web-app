@@ -1,73 +1,45 @@
-import React from "react";
-import { useSearchParams } from "react-router-dom";
-import { deleteTodo, getTodos } from "../utils/data";
-import TodoList from "../components/TodoList";
+import React, { useState } from "react";
 import SearchBar from "../components/Searchbar";
+import TodoInput from "../components/TodoInput";
+import TodoList from "../components/TodoList";
 
-function DashboardPageWrapper() {
-  const [searchParams, setSearchParams] = useSearchParams();
+function Dashboard() {
+  const [todos, setTodos] = useState([]);
 
-  const keyword = searchParams.get("keyword");
+  function addTodo(title) {
+    setTodos((currentTodos) => {
+      return [...currentTodos, { id: +new Date(), title, completed: false }];
+    });
+  }
 
-  function changeSearchParams(keyword) {
-    setSearchParams({ keyword });
+  function toggleTodo(id, completed) {
+    setTodos((currentTodos) => {
+      return currentTodos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, completed };
+        }
+
+        return todo;
+      });
+    });
+  }
+
+  function deleteTodo(id) {
+    setTodos((currentTodos) => {
+      return currentTodos.filter((todo) => todo.id !== id);
+    });
   }
 
   return (
-    <Dashboard defaultKeyword={keyword} keywordChange={changeSearchParams} />
+    <section>
+      <SearchBar />
+      <h2>Todo List</h2>
+
+      <TodoInput addTodo={addTodo} />
+
+      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+    </section>
   );
 }
 
-class Dashboard extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      todos: getTodos(),
-      keyword: props.defaultKeyword || "",
-    };
-
-    this.onDeleteHandler = this.onDeleteHandler.bind(this);
-    this.onKeywordChangeHandler = this.onKeywordChangeHandler.bind(this);
-  }
-
-  onDeleteHandler(id) {
-    deleteTodo(id);
-
-    // update todo state from data.js
-    this.setState(() => {
-      return {
-        todos: getTodos(),
-      };
-    });
-  }
-
-  onKeywordChangeHandler(keyword) {
-    this.setState(() => {
-      return {
-        keyword,
-      };
-    });
-
-    this.props.keywordChange(keyword);
-  }
-
-  render() {
-    const todos = this.state.todos.filter((todo) => {
-      return todo.todo.toLowerCase().includes(this.state.keyword.toLowerCase());
-    });
-
-    return (
-      <section>
-        <SearchBar
-          keyword={this.state.keyword}
-          keywordchange={this.onKeywordChangeHandler}
-        />
-        <h2>Todo List</h2>
-        <TodoList todos={todos} onDelete={this.onDeleteHandler} />
-      </section>
-    );
-  }
-}
-
-export default DashboardPageWrapper;
+export default Dashboard;

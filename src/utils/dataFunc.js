@@ -27,5 +27,3 @@ function addTodo(todo) {
 function deleteTodo(id) {
   todos = todos.filter((todo) => todo.id !== id);
 }
-
-export { getTodos, addTodo, deleteTodo };
