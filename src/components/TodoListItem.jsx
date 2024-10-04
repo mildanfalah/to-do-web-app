@@ -7,7 +7,9 @@ function TodoListItem({ todo, completed, id, onDelete }) {
     <li className="list-item">
       <label>
         <input type="checkbox" />
-        {todo}
+        <span style={completed ? { textDecoration: "line-through" } : {}}>
+          {todo}
+        </span>
       </label>
       <DeleteButton id={id} onDelete={onDelete} />
     </li>
