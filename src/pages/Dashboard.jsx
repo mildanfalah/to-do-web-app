@@ -39,12 +39,28 @@ function Dashboard() {
     });
   }
 
+  function editTodo(id, newTitle) {
+    setTodos((currentTodos) => {
+      return currentTodos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, title: newTitle };
+        }
+        return todo;
+      });
+    });
+  }
+
   return (
     <section>
       <SearchBar />
       <h2>Todo List</h2>
       <TodoInput addTodo={addTodo} />
-      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+      <TodoList
+        todos={todos}
+        toggleTodo={toggleTodo}
+        deleteTodo={deleteTodo}
+        editTodo={editTodo}
+      />
     </section>
   );
 }
