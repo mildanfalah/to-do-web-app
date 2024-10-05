@@ -2,10 +2,11 @@ import React from "react";
 import Navigation from "./components/Navigation";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
 
 // styling
 import "./styles/style.css";
-import RegisterPage from "./pages/RegisterPage";
 
 function TodoApp() {
   return (
@@ -18,6 +19,7 @@ function TodoApp() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </main>
     </div>

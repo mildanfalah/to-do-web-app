@@ -1,14 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import RegisterInput from "../components/RegisterInput";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function RegisterPage() {
+  const [isRegistered, setIsRegistered] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSuccessfulRegistration = () => {
+    setIsRegistered(true);
+    alert("Registration successful! you can now log in.");
+
+    // Redirect to the login page after a short delay
+    setTimeout(() => {
+      navigate("/login");
+    }, 2000);
+  };
+
   return (
     <section className="register-page">
-      <h2>Please fill out the following form to create an account.</h2>
-      <RegisterInput />
+      {isRegistered ? (
+        <div className="success-message">
+          <p>
+            Registration successful! You will be redirected to the login page
+            shortly.
+          </p>
+          <p>
+            If you're not redirected, please{" "}
+            <Link to="/login">click here to log in</Link>.
+          </p>
+        </div>
+      ) : (
+        <RegisterInput onSuccessfulRegister={handleSuccessfulRegistration} />
+      )}
       <p>
-        Back to <Link to="/">Dashboard</Link>
+        Already have an account? <Link to="/login">Log in</Link>
       </p>
     </section>
   );
