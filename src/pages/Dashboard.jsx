@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../components/Searchbar";
 import TodoInput from "../components/TodoInput";
 import TodoList from "../components/TodoList";
+import { useSearchParams } from "react-router-dom";
 
 function Dashboard() {
   const [todos, setTodos] = useState(() => {
@@ -9,6 +10,11 @@ function Dashboard() {
     if (localValue == null) return [];
 
     return JSON.parse(localValue);
+  });
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [keyword, setKeyword] = useState(() => {
+    return searchParams.get("keyword") || "";
   });
 
   useEffect(() => {
@@ -50,13 +56,22 @@ function Dashboard() {
     });
   }
 
+  function handleSearch(keyword) {
+    setKeyword(keyword);
+    setSearchParams({ keyword });
+  }
+
+  const filteredTodos = todos.filter((todo) =>
+    todo.title.toLowerCase().includes(keyword.toLowerCase())
+  );
+
   return (
     <section>
-      <SearchBar />
+      <SearchBar keyword={keyword} keywordchange={handleSearch} />
       <h2>Todo List</h2>
       <TodoInput addTodo={addTodo} />
       <TodoList
-        todos={todos}
+        todos={filteredTodos}
         toggleTodo={toggleTodo}
         deleteTodo={deleteTodo}
         editTodo={editTodo}

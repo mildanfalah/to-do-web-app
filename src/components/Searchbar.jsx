@@ -7,7 +7,7 @@ function SearchBar({ keyword, keywordchange }) {
       className="search-bar"
       placeholder="Search todo list ..."
       value={keyword}
-      onChange={(event) => keywordchange(event.target.value)}
+      onChange={(e) => keywordchange(e.target.value)}
     />
   );
 }
