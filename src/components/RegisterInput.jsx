@@ -1,13 +1,13 @@
 import React, { useState } from "react";
+import useFormInput from "../hooks/UseFormInput";
 
 const RegisterInput = ({ onSuccessfulRegister }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [emailValue, emailChangeHandler] = useFormInput("");
+  const [passwordValue, passwordChangeHandler] = useFormInput("");
+  const [confirmPasswordValue, confirmPasswordChangeHandler] = useFormInput("");
   const [error, setError] = useState("");
 
   const validateEmail = (email) => {
-    // Email validation regex
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
   };
@@ -17,38 +17,40 @@ const RegisterInput = ({ onSuccessfulRegister }) => {
     setError("");
 
     try {
-      if (!validateEmail(email)) {
+      if (!validateEmail(emailValue)) {
         setError("Invalid email format");
         return;
       }
 
-      if (password.length < 6) {
+      if (passwordValue.length < 6) {
         setError("Password must be at least 6 characters");
         return;
       }
 
-      if (password !== confirmPassword) {
-        throw new Error("Passwords do not match");
+      if (passwordValue !== confirmPasswordValue) {
+        setError("Passwords do not match");
+        return;
       }
 
       // Check if user already exists
       const users = JSON.parse(localStorage.getItem("users")) || [];
-      if (users.some((user) => user.email === email)) {
-        throw new Error("User with this email already exists");
+      if (users.some((user) => user.email === emailValue)) {
+        setError("User with this email already exists");
+        return;
       }
 
       // Save user to LocalStorage
-      const newUser = { email, password };
+      const newUser = { email: emailValue, password: passwordValue };
       localStorage.setItem("users", JSON.stringify([...users, newUser]));
 
       // Clear form
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
+      emailChangeHandler({ target: { value: "" } });
+      passwordChangeHandler({ target: { value: "" } });
+      confirmPasswordChangeHandler({ target: { value: "" } });
 
       onSuccessfulRegister();
     } catch (error) {
-      setError(error.message);
+      setError("An unexpected error occurred. Please try again.");
     }
   };
 
@@ -62,8 +64,8 @@ const RegisterInput = ({ onSuccessfulRegister }) => {
             id="email"
             type="email"
             placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={emailValue}
+            onChange={emailChangeHandler}
             required
           />
         </div>
@@ -73,8 +75,8 @@ const RegisterInput = ({ onSuccessfulRegister }) => {
             id="password"
             type="password"
             placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={passwordValue}
+            onChange={passwordChangeHandler}
             required
           />
         </div>
@@ -84,8 +86,8 @@ const RegisterInput = ({ onSuccessfulRegister }) => {
             id="confirmPassword"
             type="password"
             placeholder="Confirm your password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={confirmPasswordValue}
+            onChange={confirmPasswordChangeHandler}
             required
           />
         </div>

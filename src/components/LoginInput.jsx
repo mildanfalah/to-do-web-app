@@ -1,9 +1,10 @@
 // src/components/Login.js
 import React, { useState } from "react";
+import useFormInput from "../hooks/UseFormInput";
 
 const Login = ({ setIsLoggedIn, onLoginFailure }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useFormInput("");
+  const [password, setPassword] = useFormInput("");
   const [error, setError] = useState("");
 
   const handleLogin = (e) => {
@@ -33,7 +34,8 @@ const Login = ({ setIsLoggedIn, onLoginFailure }) => {
             type="email"
             placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={setEmail}
+            required
           />
         </div>
         <div>
@@ -41,7 +43,8 @@ const Login = ({ setIsLoggedIn, onLoginFailure }) => {
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={setPassword}
+            required
           />
         </div>
         <button type="submit">Login</button>
