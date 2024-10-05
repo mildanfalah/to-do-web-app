@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../components/Searchbar";
 import TodoInput from "../components/TodoInput";
 import TodoList from "../components/TodoList";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 function Dashboard() {
   const [todos, setTodos] = useState(() => {
@@ -15,6 +15,18 @@ function Dashboard() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [keyword, setKeyword] = useState(() => {
     return searchParams.get("keyword") || "";
+  });
+
+  const [userEmail, setUserEmail] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const email = localStorage.getItem("userEmail");
+    if (email) {
+      setUserEmail(email);
+    } else {
+      navigate("/login");
+    }
   });
 
   useEffect(() => {
@@ -67,6 +79,7 @@ function Dashboard() {
 
   return (
     <section>
+      <h1>Welcome, {userEmail}</h1>
       <SearchBar keyword={keyword} keywordchange={handleSearch} />
       <h2>Todo List</h2>
       <TodoInput addTodo={addTodo} />
