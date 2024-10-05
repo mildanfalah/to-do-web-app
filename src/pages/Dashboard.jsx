@@ -6,7 +6,8 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 function Dashboard() {
   const [todos, setTodos] = useState(() => {
-    const localValue = localStorage.getItem("TASK");
+    const userEmail = localStorage.getItem("userEmail");
+    const localValue = localStorage.getItem(`TASK_${userEmail}`);
     if (localValue == null) return [];
 
     return JSON.parse(localValue);
@@ -30,8 +31,10 @@ function Dashboard() {
   });
 
   useEffect(() => {
-    localStorage.setItem("TASK", JSON.stringify(todos));
-  }, [todos]);
+    if (userEmail) {
+      localStorage.setItem(`TASK_${userEmail}`, JSON.stringify(todos));
+    }
+  }, [todos, userEmail]);
 
   function addTodo(title) {
     setTodos((currentTodos) => {
