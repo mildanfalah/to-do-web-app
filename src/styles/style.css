@@ -1,3 +1,6 @@
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
 /* CSS Reset */
 /* Box sizing rules */
 *,
@@ -36,11 +39,13 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  font-family: "Nunito", sans-serif;
 }
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
+  text-decoration: none;
 }
 
 /* Make images easier to work with */
@@ -59,9 +64,98 @@ select {
 }
 
 /* My Css */
+/* Variable */
+:root {
+  --primary-color: #87a2ff;
+  --hover-color: #5a7dfd;
+}
+
+input {
+  padding: 5px 10px;
+  width: 100%;
+}
+
+.label-input {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.sub-title {
+  text-align: center;
+}
 
 .error-message {
+  width: 90%;
   color: red;
   font-size: 0.8em;
-  margin-top: 5px;
+  margin: auto;
+  text-align: end;
+}
+
+.btn {
+  padding: 5px 20px;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 10px;
+  color: white;
+}
+
+.btn:hover {
+  background-color: var(--hover-color);
+  cursor: pointer;
+}
+
+.todo-app {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.todo-app__header {
+  display: flex;
+  padding: 10px 10px;
+  align-items: center;
+}
+
+.todo-app__title {
+  flex: 1;
+}
+
+.todo-app__navigation-list {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 30px;
+}
+
+.todo-app__navigation-list > li {
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.main-content {
+  flex: 1;
+}
+
+/* Login Page */
+.login-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.login-section__form {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.login-page__navigate {
+  width: 90%;
+  text-align: end;
+  margin: auto;
 }

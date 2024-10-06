@@ -7,21 +7,27 @@ import LoginPage from "./pages/LoginPage";
 
 // styling
 import "./styles/style.css";
+import FooterContent from "./components/FooterContent";
 
 function TodoApp() {
   return (
     <div className="todo-app">
       <header className="todo-app__header">
-        <h1>Todo App</h1>
+        <h1 className="todo-app__title">
+          <a href="/">Todo App</a>
+        </h1>
         <Navigation />
       </header>
-      <main>
+      <main className="main-content">
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>
       </main>
+      <footer>
+        <FooterContent />
+      </footer>
     </div>
   );
 }

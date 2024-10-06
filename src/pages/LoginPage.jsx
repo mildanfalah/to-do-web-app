@@ -23,13 +23,12 @@ function LoginPage() {
 
   return (
     <div className="login-page">
-      <h2>Login to Your Account</h2>
       <LoginInput
         setIsLoggedIn={handleLoginSuccess}
         onLoginFailure={handleLoginFailure}
       />
       {loginError && <p className="error-message">{loginError}</p>}
-      <p>
+      <p className="login-page__navigate">
         Don't have an account? <Link to="/register">Register</Link>
       </p>
     </div>

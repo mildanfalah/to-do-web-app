@@ -31,8 +31,8 @@ function Navigation() {
   };
 
   return (
-    <nav className="navigation">
-      <ul>
+    <nav className="todo-app__navigation">
+      <ul className="todo-app__navigation-list">
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -40,7 +40,9 @@ function Navigation() {
           {isLoggedIn ? (
             <button onClick={handleLogout}>Logout</button>
           ) : (
-            <Link to="/login">Login</Link>
+            <Link to="/login">
+              <button className="btn">Login</button>
+            </Link>
           )}
         </li>
       </ul>
