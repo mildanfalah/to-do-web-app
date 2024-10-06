@@ -38,7 +38,9 @@ function Navigation() {
         </li>
         <li>
           {isLoggedIn ? (
-            <button onClick={handleLogout}>Logout</button>
+            <button className="btn btn-logout" onClick={handleLogout}>
+              Logout
+            </button>
           ) : (
             <Link to="/login">
               <button className="btn">Login</button>

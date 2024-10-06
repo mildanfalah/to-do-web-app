@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import useFormInput from "../hooks/UseFormInput";
+import { Link } from "react-router-dom";
 
-const Login = ({ setIsLoggedIn, onLoginFailure }) => {
+const Login = ({ setIsLoggedIn }) => {
   const [email, setEmail] = useFormInput("");
   const [password, setPassword] = useFormInput("");
-  // const [error, setError] = useState("");
+  const [loginError, setLoginError] = useState("");
+
+  const handleLoginFailure = (error) => {
+    setLoginError(error);
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -20,14 +25,14 @@ const Login = ({ setIsLoggedIn, onLoginFailure }) => {
       setIsLoggedIn(user);
       setError("");
     } else {
-      onLoginFailure("Invalid email or password");
+      handleLoginFailure("Invalid email or password");
     }
   };
 
   return (
     <div className="login-section">
       <div className="login-section__banner">
-        <img src="../public/login-banner.jpg" alt="" />
+        <img src="login-banner.jpg" alt="" />
       </div>
       <form className="login-section__form" onSubmit={handleLogin}>
         <h2 className="sub-title">Login to Your Account</h2>
@@ -61,7 +66,11 @@ const Login = ({ setIsLoggedIn, onLoginFailure }) => {
         <button className="btn btn-submit" type="submit">
           Login
         </button>
-        {/* {error && <p className="error-message">{error}</p>} */}
+
+        {loginError && <p className="error-message">{loginError}</p>}
+        <p className="login-page__navigate">
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
       </form>
     </div>
   );

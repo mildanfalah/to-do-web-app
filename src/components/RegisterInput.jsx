@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useFormInput from "../hooks/UseFormInput";
+import { Link } from "react-router-dom";
 
 const RegisterInput = ({ onSuccessfulRegister }) => {
   const [emailValue, emailChangeHandler] = useFormInput("");
@@ -55,11 +56,13 @@ const RegisterInput = ({ onSuccessfulRegister }) => {
   };
 
   return (
-    <div className="register-input">
-      <h2>Create an Account</h2>
-      <form onSubmit={handleRegister}>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
+    <div className="register-section">
+      <form className="register-section__form" onSubmit={handleRegister}>
+        <h2>Create an Account</h2>
+        <div>
+          <label className="label-input" htmlFor="email">
+            Email:
+          </label>
           <input
             id="email"
             type="email"
@@ -69,8 +72,10 @@ const RegisterInput = ({ onSuccessfulRegister }) => {
             required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
+        <div>
+          <label className="label-input" htmlFor="password">
+            Password:
+          </label>
           <input
             id="password"
             type="password"
@@ -80,8 +85,10 @@ const RegisterInput = ({ onSuccessfulRegister }) => {
             required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="confirmPassword">Confirm Password:</label>
+        <div>
+          <label className="label-input" htmlFor="confirmPassword">
+            Confirm Password:
+          </label>
           <input
             id="confirmPassword"
             type="password"
@@ -91,9 +98,21 @@ const RegisterInput = ({ onSuccessfulRegister }) => {
             required
           />
         </div>
-        <button type="submit">Sign Up</button>
+        <div className="register-section__button-notification">
+          {error && (
+            <p className="error-message register-error-message">{error}</p>
+          )}
+          <button className="btn btn-submit" type="submit">
+            Sign Up
+          </button>
+        </div>
+        <p>
+          Already have an account? <Link to="/login">Log in</Link>
+        </p>
       </form>
-      {error && <p className="error-message">{error}</p>}
+      <div className="register-section__banner">
+        <img src="register-banner.jpg" alt="" />
+      </div>
     </div>
   );
 };

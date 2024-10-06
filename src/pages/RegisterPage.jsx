@@ -32,9 +32,6 @@ function RegisterPage() {
       ) : (
         <RegisterInput onSuccessfulRegister={handleSuccessfulRegistration} />
       )}
-      <p>
-        Already have an account? <Link to="/login">Log in</Link>
-      </p>
     </section>
   );
 }

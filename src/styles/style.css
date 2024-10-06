@@ -73,6 +73,7 @@ select {
 input {
   padding: 5px 10px;
   width: 100%;
+  border-radius: 5px;
 }
 
 .label-input {
@@ -87,7 +88,7 @@ input {
 .error-message {
   width: 90%;
   color: red;
-  font-size: 0.8em;
+  font-size: 1rem;
   margin: auto;
   text-align: end;
 }
@@ -105,6 +106,15 @@ input {
   cursor: pointer;
 }
 
+.btn-submit {
+  margin: 5px 0 0 auto;
+  width: 40%;
+}
+
+.btn-logout {
+  background-color: #5e3afc;
+}
+
 .todo-app {
   width: 80%;
   margin: auto;
@@ -116,6 +126,7 @@ input {
 .todo-app__header {
   display: flex;
   padding: 10px 10px;
+  margin-bottom: 50px;
   align-items: center;
 }
 
@@ -140,22 +151,41 @@ input {
 }
 
 /* Login Page */
-.login-section {
+.login-section,
+.register-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin-top: 50px;
 }
 
-.login-section__form {
+.register-section {
+  margin-top: 0;
+}
+
+.register-section__banner {
+  width: 80%;
+  margin: auto;
+}
+
+.register-section__button-notification {
+  display: flex;
+}
+
+.register-error-message {
+  text-align: start;
+}
+
+.login-section__form,
+.register-section__form {
   width: 80%;
   margin: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 15px;
 }
 
 .login-page__navigate {
   width: 90%;
   text-align: end;
-  margin: auto;
+  margin: 10px 0 0 auto;
 }
