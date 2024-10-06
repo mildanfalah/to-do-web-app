@@ -31,31 +31,33 @@ function TodoListItem({
   };
 
   return (
-    <li>
-      <label>
+    <li className="todo-list__list">
+      <input
+        type="checkbox"
+        checked={completed}
+        onChange={(e) => toggleTodo(id, e.target.checked)}
+      />
+      {isEditing ? (
         <input
-          type="checkbox"
-          checked={completed}
-          onChange={(e) => toggleTodo(id, e.target.checked)}
+          type="text"
+          value={editedTitle}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          autoFocus
         />
-        {isEditing ? (
-          <input
-            type="text"
-            value={editedTitle}
-            onChange={handleChange}
-            onKeyDown={handleKeyDown}
-            autoFocus
-          />
-        ) : (
-          <span style={completed ? { textDecoration: "line-through" } : {}}>
-            {title}
-          </span>
-        )}
-      </label>
-      <button className="btn" onClick={handleEdit}>
+      ) : (
+        <span
+          className="todo-list__title"
+          style={completed ? { textDecoration: "line-through" } : {}}
+        >
+          {title}
+        </span>
+      )}
+
+      <button className="btn btn-todo-list" onClick={handleEdit}>
         {isEditing ? "Save" : "Edit"}
       </button>
-      <button className="btn" onClick={() => deleteTodo(id)}>
+      <button className="btn btn-todo-list" onClick={() => deleteTodo(id)}>
         Delete
       </button>
     </li>

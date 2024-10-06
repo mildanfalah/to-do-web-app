@@ -81,18 +81,22 @@ function Dashboard() {
   );
 
   return (
-    <section>
-      <h1>Welcome, {userEmail}</h1>
-      <SearchBar keyword={keyword} keywordchange={handleSearch} />
-      <h2>Todo List</h2>
-      <TodoInput addTodo={addTodo} />
-      <TodoList
-        todos={filteredTodos}
-        toggleTodo={toggleTodo}
-        deleteTodo={deleteTodo}
-        editTodo={editTodo}
-      />
-    </section>
+    <div className="dashboard-section">
+      <div className="dashboard-section__header">
+        <p className="dashboard-section__username">Welcome, {userEmail}</p>
+        <SearchBar keyword={keyword} keywordchange={handleSearch} />
+      </div>
+      <div className="dashboard-section__main">
+        <h2 className="sub-title">Todo List</h2>
+        <TodoInput addTodo={addTodo} />
+        <TodoList
+          todos={filteredTodos}
+          toggleTodo={toggleTodo}
+          deleteTodo={deleteTodo}
+          editTodo={editTodo}
+        />
+      </div>
+    </div>
   );
 }
 

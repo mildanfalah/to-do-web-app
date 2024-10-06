@@ -70,7 +70,11 @@ select {
   --hover-color: #5a7dfd;
 }
 
-input {
+#email,
+#password,
+#confirmPassword,
+#task,
+.search-bar {
   padding: 5px 10px;
   width: 100%;
   border-radius: 5px;
@@ -115,6 +119,10 @@ input {
   background-color: #5e3afc;
 }
 
+.btn-todo-list {
+  margin: 0 5px;
+}
+
 .todo-app {
   width: 80%;
   margin: auto;
@@ -126,8 +134,13 @@ input {
 .todo-app__header {
   display: flex;
   padding: 10px 10px;
-  margin-bottom: 50px;
   align-items: center;
+  border-bottom: 1px solid var(--primary-color);
+  position: fixed;
+  top: 0;
+  left: 1;
+  width: 80%;
+  background-color: white;
 }
 
 .todo-app__title {
@@ -143,11 +156,12 @@ input {
 
 .todo-app__navigation-list > li {
   padding: 10px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: bold;
 }
 .main-content {
   flex: 1;
+  margin: 150px 0 100px 0;
 }
 
 /* Login Page */
@@ -188,4 +202,73 @@ input {
   width: 90%;
   text-align: end;
   margin: 10px 0 0 auto;
+}
+
+.dashboard-section__header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-section__username {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.dashboard-section__main {
+  width: 80%;
+  margin: auto;
+  overflow: auto;
+}
+
+.todo-input,
+.search-bar,
+.dashboard-section__username {
+  display: flex;
+  gap: 1rem;
+  width: 80%;
+  margin: auto;
+}
+
+.todo-list {
+  width: 80%;
+  margin: 20px auto;
+  padding: 0;
+}
+
+.todo-list__label,
+.todo-list__list {
+  display: flex;
+  padding: 10px;
+  margin: 20px 0;
+}
+
+.todo-list__list {
+  border-bottom: 1px solid blue;
+  display: grid;
+  grid-template-columns: 2fr 6fr 2fr 2fr;
+}
+
+.todo-list__title {
+  font-size: 1.2rem;
+}
+
+input[type="checkbox"] {
+  width: 30px;
+}
+
+.footer-section {
+  border-top: 1px solid var(--primary-color);
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  background-color: white;
+  margin: 0 auto;
+
+  position: fixed;
+  left: 1;
+  bottom: 0;
+  width: 80%;
 }

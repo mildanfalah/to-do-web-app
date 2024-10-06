@@ -25,7 +25,6 @@ function TodoInput({ addTodo }) {
 
   return (
     <form className="todo-input" onSubmit={submitHandler}>
-      <label htmlFor="task">New Task</label>
       <input
         type="text"
         id="task"
@@ -33,7 +32,9 @@ function TodoInput({ addTodo }) {
         value={newTask}
         onChange={handleInputChange}
       />
-      <button type="submit">Add</button>
+      <button className="btn" type="submit">
+        Add
+      </button>
       {error && <p className="error-message">{error}</p>}
     </form>
   );

@@ -59,6 +59,8 @@ const RegisterInput = ({ onSuccessfulRegister }) => {
     <div className="register-section">
       <form className="register-section__form" onSubmit={handleRegister}>
         <h2>Create an Account</h2>
+
+        <p>Please fill in the form below to create an account</p>
         <div>
           <label className="label-input" htmlFor="email">
             Email:

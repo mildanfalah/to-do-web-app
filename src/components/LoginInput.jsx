@@ -20,10 +20,8 @@ const Login = ({ setIsLoggedIn }) => {
     );
 
     if (user) {
-      // Save login session
       localStorage.setItem("loggedInUser", JSON.stringify(user));
       setIsLoggedIn(user);
-      setError("");
     } else {
       handleLoginFailure("Invalid email or password");
     }
@@ -43,7 +41,7 @@ const Login = ({ setIsLoggedIn }) => {
           </label>
           <input
             type="email"
-            placeholder="Email"
+            placeholder="Enter your email"
             id="email"
             value={email}
             onChange={setEmail}
@@ -56,7 +54,7 @@ const Login = ({ setIsLoggedIn }) => {
           </label>
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Enter your password"
             id="password"
             value={password}
             onChange={setPassword}
