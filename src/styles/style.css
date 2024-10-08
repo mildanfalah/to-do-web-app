@@ -121,6 +121,19 @@ select {
 
 .btn-todo-list {
   margin: 0 5px;
+  background-color: #ff8a54;
+}
+
+.btn-todo-list:hover {
+  background-color: #ff6c27;
+}
+
+.btn-delete {
+  background-color: #ff4545;
+}
+
+.btn-delete:hover {
+  background-color: #ff1e1e;
 }
 
 .todo-app {

@@ -57,7 +57,10 @@ function TodoListItem({
       <button className="btn btn-todo-list" onClick={handleEdit}>
         {isEditing ? "Save" : "Edit"}
       </button>
-      <button className="btn btn-todo-list" onClick={() => deleteTodo(id)}>
+      <button
+        className="btn btn-todo-list btn-delete"
+        onClick={() => deleteTodo(id)}
+      >
         Delete
       </button>
     </li>

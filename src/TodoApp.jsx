@@ -4,10 +4,10 @@ import { Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
+import FooterContent from "./components/FooterContent";
 
 // styling
 import "./styles/style.css";
-import FooterContent from "./components/FooterContent";
 
 function TodoApp() {
   return (
