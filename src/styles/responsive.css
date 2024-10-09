@@ -1,0 +1,43 @@
+@media (max-width: 769px) {
+  .login-section__banner,
+  .register-section__banner {
+    display: none;
+  }
+
+  .login-section,
+  .register-section {
+    grid-template-columns: 1fr;
+  }
+
+  .todo-list {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .todo-list__title {
+    font-size: 1rem;
+  }
+
+  .dashboard-section__header {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .todo-app,
+  .footer-section {
+    width: 90%;
+  }
+
+  .todo-app__header {
+    width: 90%;
+  }
+
+  .todo-app__navigation-list {
+    gap: 0;
+  }
+
+  .todo-app__title {
+    font-size: 1.7rem;
+  }
+}

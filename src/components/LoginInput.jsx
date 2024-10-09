@@ -33,7 +33,7 @@ const Login = ({ setIsLoggedIn }) => {
         <img src="login-banner.jpg" alt="" />
       </div>
       <form className="login-section__form" onSubmit={handleLogin}>
-        <h2 className="sub-title">Login to Your Account</h2>
+        <h2>Login to Your Account</h2>
 
         <div>
           <label className="label-input" htmlFor="email">

@@ -24,19 +24,21 @@ function TodoInput({ addTodo }) {
   }
 
   return (
-    <form className="todo-input" onSubmit={submitHandler}>
-      <input
-        type="text"
-        id="task"
-        placeholder="Create new task"
-        value={newTask}
-        onChange={handleInputChange}
-      />
-      <button className="btn" type="submit">
-        Add
-      </button>
-      {error && <p className="error-message">{error}</p>}
-    </form>
+    <>
+      <form className="todo-input" onSubmit={submitHandler}>
+        <input
+          type="text"
+          id="task"
+          placeholder="Create new task"
+          value={newTask}
+          onChange={handleInputChange}
+        />
+        <button className="btn" type="submit">
+          Add
+        </button>
+      </form>
+      {error && <p className="error-message sub-title">{error}</p>}
+    </>
   );
 }
 

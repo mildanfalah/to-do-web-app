@@ -8,6 +8,7 @@ import FooterContent from "./components/FooterContent";
 
 // styling
 import "./styles/style.css";
+import "./styles/responsive.css";
 
 function TodoApp() {
   return (

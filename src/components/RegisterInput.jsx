@@ -108,7 +108,7 @@ const RegisterInput = ({ onSuccessfulRegister }) => {
             Sign Up
           </button>
         </div>
-        <p>
+        <p className="login-page__navigate">
           Already have an account? <Link to="/login">Log in</Link>
         </p>
       </form>

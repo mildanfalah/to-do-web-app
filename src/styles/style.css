@@ -70,6 +70,11 @@ select {
   --hover-color: #5a7dfd;
 }
 
+/* Custom Css */
+* {
+  scroll-behavior: smooth;
+}
+
 #email,
 #password,
 #confirmPassword,
@@ -83,10 +88,6 @@ select {
 .label-input {
   font-size: 1.3rem;
   font-weight: bold;
-}
-
-.sub-title {
-  text-align: center;
 }
 
 .error-message {
@@ -103,6 +104,7 @@ select {
   border: none;
   border-radius: 10px;
   color: white;
+  transition: all 0.2s ease-in-out;
 }
 
 .btn:hover {
@@ -125,7 +127,7 @@ select {
 }
 
 .btn-todo-list:hover {
-  background-color: #ff6c27;
+  background-color: #fc5609;
 }
 
 .btn-delete {
@@ -133,7 +135,11 @@ select {
 }
 
 .btn-delete:hover {
-  background-color: #ff1e1e;
+  background-color: #fd0c0c;
+}
+
+.sub-title {
+  text-align: center;
 }
 
 .todo-app {
@@ -146,7 +152,7 @@ select {
 
 .todo-app__header {
   display: flex;
-  padding: 10px 10px;
+  padding: 0 10px;
   align-items: center;
   border-bottom: 1px solid var(--primary-color);
   position: fixed;
@@ -164,17 +170,18 @@ select {
   display: flex;
   list-style: none;
   align-items: center;
-  gap: 30px;
+  gap: 10px;
+  padding: 0;
 }
 
 .todo-app__navigation-list > li {
-  padding: 10px;
+  padding: 0 10px;
   font-size: 1.1rem;
   font-weight: bold;
 }
 .main-content {
   flex: 1;
-  margin: 150px 0 100px 0;
+  margin: 110px 0 100px 0;
 }
 
 /* Login Page */
@@ -231,7 +238,6 @@ select {
 }
 
 .dashboard-section__main {
-  width: 80%;
   margin: auto;
   overflow: auto;
 }
@@ -261,7 +267,7 @@ select {
 .todo-list__list {
   border-bottom: 1px solid blue;
   display: grid;
-  grid-template-columns: 2fr 6fr 2fr 2fr;
+  grid-template-columns: 1fr 9fr 1fr 1fr;
 }
 
 .todo-list__title {
@@ -270,6 +276,7 @@ select {
 
 input[type="checkbox"] {
   width: 30px;
+  margin: 2px;
 }
 
 .footer-section {
