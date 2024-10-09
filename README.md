@@ -27,6 +27,20 @@ To run the application in development mode:
 
 This will start the development server. Open your browser and navigate to `http://localhost:5173` (or the port shown in your terminal) to view the application.
 
+## Viewing the Built Application
+
+The built version of the application is included in the `dist` directory. To view it:
+
+1. Install a local server (if you haven't already):
+   `npm install -g http-server`
+
+2. Navigate to the project root directory and run:
+   `npx http-server dist`
+
+3. Open your browser and go to `http://localhost:8080` (or the URL provided in the terminal).
+
+This will serve the production build of the application, allowing you to test it as it would appear when deployed.
+
 ## Using the Application
 
 1. **Registration and Login**:
